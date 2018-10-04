@@ -38,13 +38,9 @@ object JsoupUtils
         val imageElements = arrayListOf<Element>()
         imageList.forEach { imageElements.add(it.select("span.mdCMN09Image").first()) }
 
-        println("imageElements process done ...")
-
         // For each span element get style attr and a clear url from it
         val imageUrls = arrayListOf<String>()
         imageElements.forEach { imageUrls.add(getUrlFromStyleEmoji(it.attr("style"))) }
-
-        println("imageUrls process done ...")
 
         return imageUrls.toTypedArray()
     }
@@ -68,7 +64,7 @@ object JsoupUtils
         val urlWithArgs = style.substring(style.indexOf("(") + 1, style.indexOf(")"))
 
         //test print out all image links
-        println("urlWithArgs process done ... $urlWithArgs")
+        //println("urlWithArgs process done ... $urlWithArgs")
 
         //urlWithArgs.substring(0, urlWithArgs.lastIndexOf('"')) return statement
         return urlWithArgs

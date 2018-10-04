@@ -22,8 +22,6 @@ class Pack(packUrl: String, private var type: String)
 
             links.forEach { stickers.add(Sticker(it, "Sticker")) }
 
-            println("Pack: Sticker initialized ...")
-
             return stickers.toTypedArray()
         }
 
@@ -33,12 +31,8 @@ class Pack(packUrl: String, private var type: String)
 
             links.forEach { stickers.add(Sticker(it,"Emoji")) }
 
-            println("Pack: Emoji initialized ...")
-
             return stickers.toTypedArray()
         }
-
-        println("Pack: Error initialized ...")
 
         return stickers.toTypedArray()
     }
