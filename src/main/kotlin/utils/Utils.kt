@@ -7,13 +7,15 @@ import java.net.URL
 import javax.imageio.ImageIO
 
 
-object Utils {
-    private val FONT_SIZE = 48
-    private val STICKER_SIZE = 512
+object Utils
+{
+    private const val FONT_SIZE = 48
+    private const val STICKER_SIZE = 512
     private val WORKING_DIRECTORY = System.getProperty("user.dir")
-    private val DEFAULT_FOLDER_NAME = "stickers"
+    private const val DEFAULT_FOLDER_NAME = "stickers"
 
-    fun saveImage(imageUrl: String, name: String, dir: String) {
+    fun saveImage(imageUrl: String, name: String, dir: String)
+    {
         val pathName = "$WORKING_DIRECTORY//$dir//$name.png"
         val url = URL(imageUrl)
         writeToFile(url, pathName)
@@ -23,8 +25,10 @@ object Utils {
         saveImage(imageUrl, name, DEFAULT_FOLDER_NAME)
     }
 
-    fun writeCaptionImage(caption: String, dir: String) {
-        val fontSize = when {
+    fun writeCaptionImage(caption: String, dir: String)
+    {
+        val fontSize = when
+        {
             caption.length > 40 -> FONT_SIZE / 4
             caption.length > 20 -> FONT_SIZE / 2
             else -> FONT_SIZE
@@ -35,16 +39,19 @@ object Utils {
         ImageIO.write(image, "png", File("$WORKING_DIRECTORY//$dir//copyright.png"))
     }
 
-    fun writeCaptionImage(str: String) {
+    fun writeCaptionImage(str: String)
+    {
         writeCaptionImage(str, DEFAULT_FOLDER_NAME)
     }
 
-    fun createDirectory(name: String) {
+    fun createDirectory(name: String)
+    {
         val dir = File(name)
         dir.mkdir()
     }
 
-    private fun createCaptionImage(str: String, font: Font, dimension: Dimension): BufferedImage {
+    private fun createCaptionImage(str: String, font: Font, dimension: Dimension): BufferedImage
+    {
         val img = BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_ARGB)
 
         val g2d = img.createGraphics()
@@ -73,14 +80,16 @@ object Utils {
         return img
     }
 
-    private fun writeToFile(url: URL, pathName: String) {
+    private fun writeToFile(url: URL, pathName: String)
+    {
         val bufferedImage = ImageIO.read(url)
         val scaledImage = getResizedImage(bufferedImage)
         val outputFile = File(pathName)
         ImageIO.write(scaledImage, "png", outputFile)
     }
 
-    private fun getResizedImage(img: BufferedImage): BufferedImage {
+    private fun getResizedImage(img: BufferedImage): BufferedImage
+    {
         val dimension = getScaledDimension(img)
         val tmp = img.getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH)
         val dimg = BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_ARGB)
@@ -90,7 +99,8 @@ object Utils {
         return dimg
     }
 
-    private fun getScaledDimension(img: BufferedImage): Dimension {
+    private fun getScaledDimension(img: BufferedImage): Dimension
+    {
         val width = img.width
         val height = img.height
         val boundWidth = STICKER_SIZE

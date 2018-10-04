@@ -1,0 +1,5 @@
+C:\Users\Jesse\IdeaProjects\LineToTelegramStickers\src\main\kotlin\LineToTelegram.kt
+C:\Users\Jesse\IdeaProjects\LineToTelegramStickers\src\main\kotlin\model\Pack.kt
+C:\Users\Jesse\IdeaProjects\LineToTelegramStickers\src\main\kotlin\model\Sticker.kt
+C:\Users\Jesse\IdeaProjects\LineToTelegramStickers\src\main\kotlin\utils\JsoupUtils.kt
+C:\Users\Jesse\IdeaProjects\LineToTelegramStickers\src\main\kotlin\utils\Utils.kt

@@ -3,12 +3,14 @@ package utils
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
-object JsoupUtils {
+object JsoupUtils
+{
     private val NEW_LINE = System.getProperty("line.separator")
-    private val LINE_CORP = "Copyright © LINE Corporation"
-    private val RIGHTS = "All Rights Reserved"
+    private const val LINE_CORP = "Copyright © LINE Corporation"
+    private const val RIGHTS = "All Rights Reserved"
 
-    fun getImageLinks(doc: Element): Array<String> {
+    fun getImageLinks(doc: Element): Array<String>
+    {
         val imageList = getListElements(doc)
 
         // From each li element select span that contains img url in it style
@@ -16,15 +18,40 @@ object JsoupUtils {
         val imageElements = arrayListOf<Element>()
         imageList.forEach { imageElements.add(it.select("span.mdCMN09Image").first()) }
 
+        println("imageElements process done ...")
+
         // For each span element get style attr and a clear url from it
         val imageUrls = arrayListOf<String>()
         imageElements.forEach { imageUrls.add(getUrlFromStyle(it.attr("style"))) }
+
+        println("imageUrls process done ...")
+
+        return imageUrls.toTypedArray()
+    }
+
+    fun getImageLinksEmoji(doc: Element): Array<String>
+    {
+        val imageList = getListElements(doc)
+
+        // From each li element select span that contains img url in it style
+        // We get first because li contains only one span
+        val imageElements = arrayListOf<Element>()
+        imageList.forEach { imageElements.add(it.select("span.mdCMN09Image").first()) }
+
+        println("imageElements process done ...")
+
+        // For each span element get style attr and a clear url from it
+        val imageUrls = arrayListOf<String>()
+        imageElements.forEach { imageUrls.add(getUrlFromStyleEmoji(it.attr("style"))) }
+
+        println("imageUrls process done ...")
 
         return imageUrls.toTypedArray()
     }
 
     // Select each li element with image by selecting of div -> ul -> li
-    private fun getListElements(doc: Element): Elements {
+    private fun getListElements(doc: Element): Elements
+    {
         val imageList = doc.select("div.mdCMN09ImgList").first()
         return imageList.select("ul.mdCMN09Ul").first().select("li.mdCMN09Li")
     }
@@ -33,6 +60,18 @@ object JsoupUtils {
     private fun getUrlFromStyle(style: String): String {
         val urlWithArgs = style.substring(style.indexOf("(") + 1, style.indexOf(")"))
         return urlWithArgs.substring(0, urlWithArgs.lastIndexOf(";"))
+    }
+
+    // Get a clean url from style, selecting just in the middle of the brackets and without params
+    private fun getUrlFromStyleEmoji(style: String): String
+    {
+        val urlWithArgs = style.substring(style.indexOf("(") + 1, style.indexOf(")"))
+
+        //test print out all image links
+        println("urlWithArgs process done ... $urlWithArgs")
+
+        //urlWithArgs.substring(0, urlWithArgs.lastIndexOf('"')) return statement
+        return urlWithArgs
     }
 
     fun getCopyrightCaption(doc: Element): String {
@@ -61,9 +100,9 @@ object JsoupUtils {
         return builder.toString()
     }
 
-    fun getPackTitle(doc: Element): String {
+    fun getPackTitle(doc: Element): String
+    {
         val element = doc.select("div.mdBox03Inner01").first().select("h3.mdCMN08Ttl").first()
         return element.text().replace("/?%*:|\"<>".toRegex(),"")
     }
-
 }
