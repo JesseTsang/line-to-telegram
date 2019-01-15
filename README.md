@@ -17,10 +17,6 @@ When work is done, a folder with images on it will be created.
 
 Now you can publish your sticker pack, just do it via the Telegram [stickers bot][5]
 
-### Additional Supports
-1. Support region-locked sticker pack: Seach for the pack name(無敵鬧4貓二代 for example) then copy the Google cache link. It has the form of (https://webcache.googleusercontent.com/ ...)
-1. You can now also download Line Emoji (only non-region-locked versions for now)
-
 ### Result example
 
 #### [DRAGONBALL][4]
