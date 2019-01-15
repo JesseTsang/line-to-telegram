@@ -17,6 +17,9 @@ When work is done, a folder with images on it will be created.
 
 Now you can publish your sticker pack, just do it via the Telegram [stickers bot][5]
 
+### Update
+1. Now support emoji stickers (Example Asuan Emoji[6])
+
 ### Result example
 
 #### [DRAGONBALL][4]
@@ -28,3 +31,4 @@ Now you can publish your sticker pack, just do it via the Telegram [stickers bot
 [3]: https://store.line.me/stickershop/product/1439/en
 [4]: https://t.me/addstickers/LineDBStrickers
 [5]: https://t.me/Stickers
+[6]: https://store.line.me/emojishop/product/5bfccaf9040ab139c41b2c46/zh-Hant
