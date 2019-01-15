@@ -18,7 +18,7 @@ When work is done, a folder with images on it will be created.
 Now you can publish your sticker pack, just do it via the Telegram [stickers bot][5]
 
 ### Update
-1. Now support emoji stickers (Example Asuan Emoji[6])
+1. Now support emoji stickers (Example [Asuan Emoji][6])
 
 ### Result example
 
